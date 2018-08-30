@@ -1,0 +1,25 @@
+{
+  allTasks{
+  	id
+    title
+    description
+    done
+  }
+}
+
+mutation {
+    checkTask(id:"1e13ef87-945e-48cf-9da1-0ec6ede54e87")
+}
+
+mutation {
+	addTask(title:"task1",description:"description1")
+}
+	
+mutation {
+	editTask(id:"1e13ef87-945e-48cf-9da1-0ec6ede54e87", title:"task1",description:"description1")
+}
+
+
+mutation {
+	removeTask(id:"1e13ef87-945e-48cf-9da1-0ec6ede54e87")
+}
