@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>Tasks</h1>
-    <p v-for="task in tasks" :key="task.id">{{task.title}}</p>
+    <p v-for="task in allTasks" :key="task.id">{{task.title}}</p>
   </div>
 </template>
 
@@ -12,12 +12,12 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      tasks : Array,
+      allTasks : Array,
     };
   },
   apollo: {
     // Simple query that will update the 'hello' vue property
-    tasks: gql`
+    allTasks: gql`
     query {
       allTasks{
   	    id

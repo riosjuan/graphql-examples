@@ -2,6 +2,7 @@ const express = require('express');
 const express_graphql = require('express-graphql');
 const { buildSchema } = require('graphql');
 const uuidv1 = require('uuid/v1');
+var cors = require('cors')
 // GraphQL schema
 
 const tasks = [
@@ -81,6 +82,9 @@ var root = {
 };
 // Create an express server and a GraphQL endpoint
 var app = express();
+
+app.use(cors());
+
 app.use('/graphql', express_graphql({
     schema: schema,
     rootValue: root,
