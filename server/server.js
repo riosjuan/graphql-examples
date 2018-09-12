@@ -65,6 +65,7 @@ var schema = buildSchema(`
     type Mutation {
         addTask(title:String!, description:String!):ID
         checkTask(id:ID!):Boolean
+        uncheckTask(id:ID!):Boolean
         editTask(id:ID! ,title: String!, description: String!): Boolean
         removeTask(id:ID!): Boolean
         assignTask(id:ID!, personId:ID!):Boolean
@@ -88,11 +89,20 @@ const addTask = ({title, description}) => {
 
 const checkTask = ({id}) => {
     const target = tasks.find((task)=> task.id === id);
-    if (target){
+    if (target && !target.done){
         target.done = true;
         return true;
     } 
     return false;
+};
+
+const uncheckTask = ({id}) => {
+  const target = tasks.find((task)=> task.id === id);
+  if (target && target.done){
+      target.done = false;
+      return true;
+  } 
+  return false;
 };
 
 const assignTask = ({id, personId}) => {
@@ -134,6 +144,7 @@ var root = {
     allPeople: () => people,
     addTask,
     checkTask,
+    uncheckTask,
     editTask,
     removeTask,
     assignTask,
