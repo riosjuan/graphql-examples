@@ -109,6 +109,9 @@ const assignTask = ({id, personId}) => {
   const target = tasks.find((task)=> task.id === id);
   const person = people.find((person)=> person.id === personId);
   if (target && person){
+      if (target.for) {
+        target.for.tasks = target.for.tasks.filter(task => task.id !== id);
+      }
       target.for = person;
       if (!person.tasks.find((task)=>task.id===id)){
         person.tasks.push(target);
