@@ -5,26 +5,27 @@ type Person {
 }
 
 type Task {
-  id: ID!
-  title: String!
-  description: String!
-  done: Boolean!
-  for:Person!
+    id: ID!
+    title: String!
+    description: String!
+    done: Boolean!
+    for:Person
 }
 
 type Query {
-  allTasks:[Task!]!
-  allPeople:[Person!]!
+    allTasks:[Task!]!
+    allPeople:[Person!]!
 }
 
 type Mutation {
-  addTask(title:String!, description:String!):ID
-  checkTask(id:ID!):Boolean
-  uncheckTask(id:ID!):Boolean
-  editTask(id:ID! ,title: String!, description: String!): Boolean
-  removeTask(id:ID!): Boolean
+    addTask(title:String!, description:String!):ID
+    checkTask(id:ID!):Boolean
+    uncheckTask(id:ID!):Boolean
+    editTask(id:ID! ,title: String!, description: String!): Boolean
+    removeTask(id:ID!): Boolean
+    assignTask(id:ID!, personId:ID!):Boolean
 }
 
 type Subscription {
-  newTask:Task!  
+    newTask:Task!  
 }
