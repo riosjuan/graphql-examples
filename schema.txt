@@ -1,12 +1,20 @@
+type Person {
+  id:ID!
+  name:String!
+  tasks:[Task!]!
+}
+
 type Task {
     id: ID!
     title: String!
     description: String!
     done: Boolean!
+    for:Person!
 }
 
 type Query {
     allTasks:[Task!]!
+    allPeople:[Person!]!
 }
 type Mutation {
     addTask(title:String!, description:String!):ID
@@ -15,5 +23,5 @@ type Mutation {
     removeTask(id:ID!): Boolean
 }
 type Subscription {
-    
+    newTask:Task!  
 }
